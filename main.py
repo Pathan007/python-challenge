@@ -1,81 +1,42 @@
 import os
 import csv
 
-names = []
-candidates = {}
-vote_count = 0
+budget_data ='c:\\temp\\budget_data.csv'
 
-budget_data ='c:\\temp\\election_data.csv'
-
-file_path = os.path.join('c:\\temp\\election_data.csv')
-
+file_path = os.path.join('c:\\temp\\budget_data.csv')
 with open(file_path,newline='') as csvfile:
-   
-   
-    reader = csv.reader(csvfile)
+    budget_data = csv.reader(csvfile, delimeter=",")
+next(budget,none)
+for row in csvdata:
+ #school
+    months.append(row[0])
+    revenue.append(int(row[1]))
 
-    header = next(reader)
-    
-    for row in reader:
-        vote_count = vote_count + 1
-        candidates_name = row[2]
-        if candidates_name not in names:
-            names.append(candidates_name)
-            candidates[candidates_name] = 0
-    
-        candidates[candidates_name] = candidates[candidates_name] + 1
+budgetmonths = budgetmonths + 1
+#def
+totalrevenue = totalrevenue + int(row[1])
+       # def       
+       if budgetmonths >= 1:
+            change = change + (int(row[1]) - int(prevrow[1]))
+        if (int(row[1]) - int(prevrow[1]))>greatestinc:
+            greatestinc = int(row[1])-int(prevrow[1])
+            greatestincdate = str(row[0])
+        if (int(row[1]) - int(prevrow[1]))<greatestdec:
+            greatestdec = int(row[1])-int(prevrow[1])
+            greatestdecdate = str(row[0])
+        prevrow = row
+        totalmonths = budget1months + budget2months
+avgchange = int(change/totalmonths)
 
-#for key, value in candidates.items():
-#    candidates_percent[key] = round((value/vote_count) * 100, 2
+print("Total Months: " + str(totalmonths) )
+print("Total Revenue: $" + str(totalrevenue))
+print("Average Revenue Change: $" + str(avgchange))
+print("Greatest Increase in Revenue: " + str(greatestincdate) + " ($" + str(greatestinc) + ")")
+print("Greatest Decrease in Revenue: "+ str(greatestdecdate) + " ($" + str(greatestdec) + ")")
 
-#for key in candidates:
 
-    #if candidates[key] > winner_count:
+           
 
-        #winner = key
 
-       # winner_count = candidates[key]
 
-        #print("Election Results")
-
-print("-------------------------------------")
-
-print("Total Votes: " + str(vote_count))
-
-print("-------------------------------------")
-
-for key in candidates:
-    print(key + ": " + str(candidates[key]))
-    print(key + ": " + str(candidates[key]/vote_count*100))
-    if len(dict[maxVote])>1:
-        print(dict[maxVote])[0]
-        if __name__ == "__main__":
-#for key, value in candidates.items():
-
-#    print(key + ": " + str(candidates_percent[key]) + "% (" + str(value) + ")")
-
-print("-------------------------------------")
-
-print("Winner: " + winner)
-
-print("-------------------------------------")
-
-new_file = open("results.txt", "w")
-
-ew_file.write("Election Results \n")
-
-new_file.write("------------------------------------- \n")
-
-new_file.write("Total Votes: " + str(vote_count) + "\n")
-
-new_file.write("------------------------------------- \n")
-
-for key, value in candidates.items():
-
-    new_file.write(key + ": " + str(candidates_percent[key]) + "% (" + str(value) + ") \n")
-
-new_file.write("------------------------------------- \n")
-
-new_file.write("Winner: " + winner + "\n")
-
-new_file.write("------------------------------------- \n")
+#if os.path.exists(budget_data):
